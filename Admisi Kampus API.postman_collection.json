@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "7a440de8-fef7-4c5f-938b-20a5b1004231",
+		"name": "Admisi Kampus API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50573300",
+		"_collection_link": "https://affanhelsa1010-7065461.postman.co/workspace/Muhammad-Affan's-Workspace~fc2c87cb-5ea8-413c-895d-30f1e4b1bda6/collection/50573300-7a440de8-fef7-4c5f-938b-20a5b1004231?action=share&source=collection_link&creator=50573300"
+	},
+	"item": [
+		{
+			"name": "Universities (Hipolabs API)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/universities/search?country=Indonesia",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"universities",
+						"search"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Indonesia"
+						}
+					]
+				},
+				"description": "Mengambil daftar universitas di Indonesia dari Hipolabs Public API secara real-time.  \nData digunakan sebagai referensi universitas tujuan pada form pendaftaran mahasiswa."
+			},
+			"response": []
+		},
+		{
+			"name": "All Registrations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/registrations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"registrations"
+					]
+				},
+				"description": "Mengambil seluruh data pendaftaran mahasiswa yang tersimpan di database.  \nResponse berupa array JSON berisi semua record registrasi beserta statusnya."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"full_name\": \"Satrya Hidayat\",\r\n    \"email\": \"hidayat@gmail.com\",\r\n    \"phone\": \"089876543210\",\r\n    \"birth_date\": \"2005-06-15\",\r\n    \"gpa\": 3.50,\r\n    \"university_name\": \"Universitas Indonesia\",\r\n    \"university_domain\": \"ui.ac.id\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/registrations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"registrations"
+					]
+				},
+				"description": "Menambahkan data pendaftaran mahasiswa baru ke database.  \nStatus pendaftaran otomatis diset pending saat pertama kali didaftarkan."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"accepted\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/registrations/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"registrations",
+						"2"
+					]
+				},
+				"description": "Mengubah status pendaftaran mahasiswa berdasarkan ID.  \nNilai status yang tersedia: pending, accepted, rejected."
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": \"accepted\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/registrations/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"registrations",
+						"2"
+					]
+				},
+				"description": "Menghapus data pendaftaran mahasiswa berdasarkan ID."
+			},
+			"response": []
+		}
+	]
+}
